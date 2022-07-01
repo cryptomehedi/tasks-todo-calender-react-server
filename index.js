@@ -32,7 +32,17 @@ async function run(){
             res.send(results)
         })
 
-        
+        app.put('/task/:id', async(req, res)=> {
+            const id = req.params.id.slice(1, req.params.id.length) 
+            const task = req.body 
+            const filter = {_id: ObjectId(id)} 
+            const options = { upsert: true }
+            const updateDoc = {
+                $set: task,
+                } 
+            const results = await tasksCollection.updateOne(filter, updateDoc, options)
+            res.send(results) 
+        })
     }
     finally{}
 }
