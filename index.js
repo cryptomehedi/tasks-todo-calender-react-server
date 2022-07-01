@@ -1,8 +1,16 @@
-const express = require('express');
-const cors = require('cors');
-const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb'); 
-const app = express();
-require('dotenv').config();
+// const express = require('express');
+// const cors = require('cors');
+// const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb'); 
+// const app = express();
+// require('dotenv').config();
+// const port = process.env.PORT || 4000
+
+
+const express = require('express')
+const cors = require('cors'); 
+const { MongoClient, ServerApiVersion , ObjectId } = require('mongodb');
+require('dotenv').config() 
+const app = express()
 const port = process.env.PORT || 4000
 
 
@@ -12,10 +20,10 @@ app.use(cors())
 app.use(express.json())
 
 // mongodb connection
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ouoh3.mongodb.net/?retryWrites=true&w=majority`;
-const uri = `mongodb+srv://heytodobro:3UKGnY8s7HohA1s8@cluster0.ouoh3.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ouoh3.mongodb.net/?retryWrites=true&w=majority`;
+// const uri = `mongodb+srv://heytodobro:3UKGnY8s7HohA1s8@cluster0.ouoh3.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-console.log(uri);
+// console.log(uri);
 
 async function run(){
     try {
