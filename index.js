@@ -12,7 +12,7 @@ app.use(cors())
 app.use(express.json())
 
 // mongodb connection
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ouoh3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ouoh3.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 async function run(){
@@ -33,7 +33,7 @@ async function run(){
         })
 
         app.put('/task/:id', async(req, res)=> {
-            const id = req.params.id.slice(1, req.params.id.length) 
+            const id = req.params.id
             const task = req.body 
             const filter = {_id: ObjectId(id)} 
             const options = { upsert: true }
@@ -45,7 +45,7 @@ async function run(){
         })
 
         app.put('/taskComplete/:id', async(req, res)=> {
-            const id = req.params.id.slice(1, req.params.id.length) 
+            const id = req.params.id
             const status = req.body 
             const filter = {_id: ObjectId(id)} 
             const options = { upsert: true }
