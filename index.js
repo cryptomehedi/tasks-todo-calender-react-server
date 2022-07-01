@@ -26,6 +26,12 @@ async function run(){
             res.send(results)
         })
 
+        app.get('/task', async(req, res)=> {
+            const query = {}
+            const results = await tasksCollection.find(query).toArray()
+            res.send(results)
+        })
+
         
     }
     finally{}
