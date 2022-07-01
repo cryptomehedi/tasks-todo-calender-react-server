@@ -60,12 +60,12 @@ async function run(){
     finally{}
 }
 
-run().catch(err => console.dir(err))
+run().catch(console.dir)
 
 app.get('/', (req, res) => {
     res.send('Server running Successfully')
 })
 
 app.listen(port, ()=> {
-    console.log(port);
+    console.log( 'Server running', port);
 })
