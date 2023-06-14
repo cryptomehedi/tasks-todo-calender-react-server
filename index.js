@@ -25,9 +25,10 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 // console.log(uri);
 
-async function run(){
-    try {
-        await client.connect()
+// async function run(){
+//     try {
+//         await 
+        client.connect()
         const tasksCollection = client.db('TasksList').collection('tasks')
 
         app.post('/task', async(req, res)=> {
@@ -66,11 +67,11 @@ async function run(){
             const results = await tasksCollection.updateOne(filter, updateDoc, options)
             res.send(results) 
         })
-    }
-    finally{}
-}
+//     }
+//     finally{}
+// }
 
-run().catch(console.dir)
+// run().catch(console.dir)
 
 app.get('/', (req, res) => {
     res.send('Server running Successfully')
